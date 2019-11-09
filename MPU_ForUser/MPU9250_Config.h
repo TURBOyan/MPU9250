@@ -41,8 +41,8 @@
 
 /*!!!***********************************!!!*/
 //MPU9250的IIC通讯引脚，最重要的两个引脚
-#define MY_SCL_GPIO   A9 	//MPU的SCL脚
-#define MY_SDA_GPIO   A8	//MPU的SDA脚
+#define MY_SCL_GPIO   A14 	//MPU的SCL脚
+#define MY_SDA_GPIO   A13	//MPU的SDA脚
 
 /*!!!***********************************!!!*/
 //此处将外部的GPIO操作函数传入
@@ -60,3 +60,6 @@
 #define Config_READ_SDA   	 gpio_get(MY_SDA_GPIO)    //读取SDA电平
 
 #endif
+
+
+//**********************************written by TURBO*******************************************************/

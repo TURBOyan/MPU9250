@@ -24,11 +24,10 @@
 
 #define EMPL_TARGET_STM32F4
 
-#define MPU9250
+#define MPU9250 
 
-//最高不超过200Hz  
-#define DEFAULT_MPU_HZ  (200)	
-#define COMPASS_READ_MS (100)
+#define DEFAULT_MPU_HZ  (200)	 //最高不超过200Hz  	最佳200，且这里的数要和DMP_SAMPLE_RATE保持一致，在inv_mpu_dmp_motion_driver.c文件内
+#define COMPASS_READ_MS (60)  //不得低于10ms		最佳50-80
 
 #define INV_X_GYRO      (0x40)
 #define INV_Y_GYRO      (0x20)

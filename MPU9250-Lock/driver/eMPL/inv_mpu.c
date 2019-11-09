@@ -37,6 +37,9 @@
 #include "mpuiic.h"
 #include "mpu9250.h"
 
+#include "Selfbuild_oled.h"
+
+
 /* The following functions must be defined for this platform:
  * i2c_write(unsigned char slave_addr, unsigned char reg_addr,
  *      unsigned char length, unsigned char const *data)

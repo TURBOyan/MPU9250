@@ -16,6 +16,7 @@ uint8 MPU_Selftest(void)
 
 uint8 Refresh_MPUTeam(MPU_DataTeam_TypeDef MPU_DataTeam)//¸üÐÂMPUÊý¾Ý
 {
+	short MAG_DATA[3];
   switch(MPU_DataTeam)
 	{
 	  case ACC:
@@ -23,7 +24,10 @@ uint8 Refresh_MPUTeam(MPU_DataTeam_TypeDef MPU_DataTeam)//¸üÐÂMPUÊý¾Ý
 	  case GYRO:
 		 MPU_Get_Gyroscope(&MPU_Data.GYRO.x,&MPU_Data.GYRO.y,&MPU_Data.GYRO.z);break;
 	  case MAG:
-		 MPU_Get_Magnetometer(&MPU_Data.MAG.x,&MPU_Data.MAG.y,&MPU_Data.MAG.z);break;
+			mpu_get_compass_reg(MAG_DATA,NULL);			
+			MPU_Data.MAG.x=MAG_DATA[0];
+			MPU_Data.MAG.y=MAG_DATA[1];
+			MPU_Data.MAG.z=MAG_DATA[2];break;
 	  case TEMP:
 		 MPU_Data.TEMP=MPU_Get_Temperature();break;
 #if defined USE_DMP
@@ -75,3 +79,6 @@ float Mpu_Normalization(float Mpu_Value,float Mpu_Zero)  //MpuÖµ¹éÎª0-360£¬ÇÒÖØÉ
 		
     return Return_Data;
 }
+
+
+//**********************************written by TURBO*******************************************************/
