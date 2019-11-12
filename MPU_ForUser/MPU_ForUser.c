@@ -1,5 +1,7 @@
 #include "MPU_ForUser.h"
 
+#include "inv_mpu_dmp_motion_driver.h"
+
 struct MPU_Typedef MPU_Data;
 
 uint8 MPU_Init_ForUser(void)
@@ -17,6 +19,7 @@ uint8 MPU_Selftest(void)
 uint8 Refresh_MPUTeam(MPU_DataTeam_TypeDef MPU_DataTeam)//更新MPU数据
 {
 	short MAG_DATA[3];
+	uint32 step_buff=0;
   switch(MPU_DataTeam)
 	{
 	  case ACC:
@@ -30,6 +33,9 @@ uint8 Refresh_MPUTeam(MPU_DataTeam_TypeDef MPU_DataTeam)//更新MPU数据
 			MPU_Data.MAG.z=MAG_DATA[2];break;
 	  case TEMP:
 		 MPU_Data.TEMP=MPU_Get_Temperature();break;
+		case STEP:
+		dmp_get_pedometer_step_count(&step_buff);
+		MPU_Data.Step=step_buff;		break;
 #if defined USE_DMP
 		case DMP_MPL:
 		 mpu_dmp_get_data(&MPU_Data.Pitch, &MPU_Data.Roll, &MPU_Data.Yaw);break;

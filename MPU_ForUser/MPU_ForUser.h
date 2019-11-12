@@ -65,6 +65,10 @@ extern struct MPU_Typedef
 			Pitch_Last,		//历史俯仰角
 			Roll_Last,		//历史翻滚角
 			Yaw_Last;			//历史偏航角
+		
+/************************************************/
+		uint32
+			Step;			//步数
 
 }MPU_Data;
 
@@ -75,6 +79,7 @@ typedef enum
 	GYRO,			//三轴角速度
 	MAG,			//三轴磁力计
 	TEMP,		  //温度
+	STEP,			//步数
 	DMP_MPL,	//三态角
 }MPU_DataTeam_TypeDef;
 

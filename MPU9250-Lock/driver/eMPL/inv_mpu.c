@@ -3506,7 +3506,9 @@ u8 mpu_mpl_get_data(float *pitch,float *roll,float *yaw)
 //		return 1;	 
 //	
 //	}
-	  while(dmp_read_fifo(gyro, accel_short, quat, &sensor_timestamp, &sensors,&more)){};
+	 // while(dmp_read_fifo(gyro, accel_short, quat, &sensor_timestamp, &sensors,&more)){};  //查询模式
+		dmp_read_fifo(gyro, accel_short, quat, &sensor_timestamp, &sensors,&more);		//中断模式
+	
     if(sensors&INV_XYZ_GYRO)
     {
         inv_build_gyro(gyro,sensor_timestamp);          //把新数据发送给MPL
